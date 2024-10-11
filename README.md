@@ -27,21 +27,15 @@
 # MemoryLane
 
 ## Description  
-MemoryLane is a personal memory archive where users can create, store, update, and retrieve memories, tagged with relevant details like emotions, people, locations, and events.
-
+MemoryLane is a personal memory archive where users can create, store, update, and retrieve memories, tagged with relevant details like emotions and location
 ## Key Features  
 
 ### User Authentication  
 - Users can register and log in using JWT authentication to securely store and access their personal memories.
 
 ### Memory CRUD Operations  
-- **Create a Memory**: Users can add a new memory with a title, description, date, location, and tags (people, events, places).  
-- **Update a Memory**: Edit existing memories to update descriptions, tags, or attached media.  
-- **Delete a Memory**: Users can remove memories from their archive.  
-- **View Memories**: Retrieve a list of all memories or view a specific one.
-
-### Memory Tagging  
-- Memories can be tagged with emotions (happy, sad, exciting, nostalgic), people, locations, and events (e.g., birthdays, vacations).
+- **Create a Memory**: Users can add a new memory with a title, description, date, location and emotion  
+- **Update a Memory**: Edit existing memories to update its entries 
 
 ---
 
@@ -52,15 +46,9 @@ MemoryLane is a personal memory archive where users can create, store, update, a
 - **Relationship**: One-to-Many with Memories (each user can have many memories)
 
 ### Memory Entity  
-- **Fields**: `id`, `title`, `description`, `emotion`, `date`, `location`, `tags` (array of strings), `mediaUrl`  
+- **Fields**: `id`, `title`, `description`, `emotion`, `date`, `location`,
 - **Relationships**:  
   - Many-to-One with User (a memory belongs to a user)  
-  - Many-to-Many for tags (people, places, events)
-
-### Tag Entity (Optional)  
-- **Fields**: `id`, `name`  
-- Tags include emotions, people, locations, or special events.
-
 ---
 
 ## API Endpoints  
@@ -70,19 +58,19 @@ MemoryLane is a personal memory archive where users can create, store, update, a
 - `POST /auth/login`: Log in and receive a JWT token.
 
 ### Memory Routes  
-- `POST /memories`: Create a new memory (title, description, date, location,feeling).  
+- `POST /memories`: Create a new memory (title, description, date, location,emotion).  
 - `GET /memories`: Get all memories for the logged-in user.  
 - `GET /memories/:id`: Get a specific memory. 
 - `GET /memories/location/:location`: Get a specific by location.  
 - `GET /memories/title/:title`: Get a specific title.   
-- `Get /memories/feeling/:feeling`: Update a feeling.
+- `Get /memories/emotion/:emotion`: Update a emotion.
 - `PATCH /memories/:id`: modify a memory.  
 - `DELETE /memories/:id`: Delete a memory.
 
 ### User Routes  
 - `POST /users`: Create a new user.
 - `GET /users:` Get all users (admin access).
-- `GET /users/`:id: Get a specific user by ID.
+- `GET /users/:id` : Get a specific user by ID.
 - `GET /users/username/:username` : Get a user by username.
 - `GET /users/email/:email` : Get a user by email. 
 - `PATCH /users/:id` : Modify a user by ID.
