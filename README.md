@@ -22,49 +22,73 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
-
-MemoryLane
-Key Features:
-1.	User Authentication:
-o	Users can register and log in with JWT authentication to store and access their personal memories.
-2.	Memory CRUD Operations:
-o	Create a Memory: Users can create a memory with details like title, description, date, location, and tags (people, events, places).
-o	Update a Memory: Users can edit the memory to update descriptions, tags, or even the attached media.
-o	Delete a Memory: Remove memories from their archive.
-o	View Memories: Retrieve a list of memories, or view a specific memory.
-3.	Memory Tagging:
-o	Memories can be tagged by emotion (happy, sad, exciting, nostalgic), location, people and events (e.g., birthdays, vacations).
-Entities:
-1.	User Entity:
-o	Fields: id, username, email, password
-o	Relationship: One-to-Many with Memories (each user can have many memories)
-2.	Memory Entity:
-o	Fields: id, title, description, emotion, date, location, tags (array of strings), mediaUrl
-o	Relationships:
-	Many-to-One with User (a memory belongs to a user)
-	Many-to-Many for tags (people, places, events)
-3.	Tag Entity (optional):
-o	Fields: id, name
-o	Tags could include emotions, people, locations, or special events.
 
 
+# MemoryLane
 
+## Description  
+MemoryLane is a personal memory archive where users can create, store, update, and retrieve memories, tagged with relevant details like emotions, people, locations, and events.
 
-API Endpoints:
-Authentication:
-•	POST /auth/register: Register a new user
-•	POST /auth/login: Log in (returns JWT token)
-Memory Routes:
-•	POST /memories: Create a new memory (title, description, date, location, tags, media)
-•	GET /memories: Get all memories for the logged-in user
-•	GET /memories/:id: Get a specific memory
-•	PUT /memories/:id: Update a memory
-•	DELETE /memories/:id: Delete a memory
-Tags/Filter Routes:
-•	GET /memories/search: Search for memories by title, tags, or date
-•	GET /memories/filter: Filter memories by emotion, location, or people
+## Key Features  
 
+### User Authentication  
+- Users can register and log in using JWT authentication to securely store and access their personal memories.
+
+### Memory CRUD Operations  
+- **Create a Memory**: Users can add a new memory with a title, description, date, location, and tags (people, events, places).  
+- **Update a Memory**: Edit existing memories to update descriptions, tags, or attached media.  
+- **Delete a Memory**: Users can remove memories from their archive.  
+- **View Memories**: Retrieve a list of all memories or view a specific one.
+
+### Memory Tagging  
+- Memories can be tagged with emotions (happy, sad, exciting, nostalgic), people, locations, and events (e.g., birthdays, vacations).
+
+---
+
+## Entities  
+
+### User Entity  
+- **Fields**: `id`, `username`, `email`, `password`  
+- **Relationship**: One-to-Many with Memories (each user can have many memories)
+
+### Memory Entity  
+- **Fields**: `id`, `title`, `description`, `emotion`, `date`, `location`, `tags` (array of strings), `mediaUrl`  
+- **Relationships**:  
+  - Many-to-One with User (a memory belongs to a user)  
+  - Many-to-Many for tags (people, places, events)
+
+### Tag Entity (Optional)  
+- **Fields**: `id`, `name`  
+- Tags include emotions, people, locations, or special events.
+
+---
+
+## API Endpoints  
+
+### Authentication  
+- `POST /auth/register`: Register a new user.  
+- `POST /auth/login`: Log in and receive a JWT token.
+
+### Memory Routes  
+- `POST /memories`: Create a new memory (title, description, date, location,feeling).  
+- `GET /memories`: Get all memories for the logged-in user.  
+- `GET /memories/:id`: Get a specific memory. 
+- `GET /memories/location/:location`: Get a specific by location.  
+- `GET /memories/title/:title`: Get a specific title.   
+- `Get /memories/feeling/:feeling`: Update a feeling.
+- `PATCH /memories/:id`: modify a memory.  
+- `DELETE /memories/:id`: Delete a memory.
+
+### User Routes  
+- `POST /users`: Create a new user.
+- `GET /users:` Get all users (admin access).
+- `GET /users/`:id: Get a specific user by ID.
+- `GET /users/username/:username` : Get a user by username.
+- `GET /users/email/:email` : Get a user by email. 
+- `PATCH /users/:id` : Modify a user by ID.
+- `DELETE /users/:id` : Delete a user by ID.
+
+---
 
 
 ## Project setup
