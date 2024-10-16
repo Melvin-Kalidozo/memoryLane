@@ -1,1 +1,6 @@
-export class Memory {}
+import { Entity } from "typeorm";
+
+@Entity()
+export class Memory {
+
+}
