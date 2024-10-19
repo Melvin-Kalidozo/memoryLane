@@ -5,11 +5,15 @@ import { MemoryModule } from './memory/memory.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from 'typeOrmConfig';
-import { User } from './user/entities/user.entity';
+// import { User } from './user/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [MemoryModule, UserModule,
+  imports: [
+    MemoryModule,
+    UserModule,
     TypeOrmModule.forRoot(typeOrmConfig),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
