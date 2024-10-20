@@ -22,6 +22,7 @@ export class UserService {
     return this.userRepository.find();
   }
 
+  // This is here for testing purposes
   private readonly users = [
     {
       userId: 1,
@@ -35,6 +36,7 @@ export class UserService {
     },
   ];
 
+  // Change this to use your database instead
   async findOneByUser(email: string): Promise<UserT | undefined> {
     return this.users.find((user) => user.email === email);
   }
